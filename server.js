@@ -1,8 +1,14 @@
-const express = require('express')
+const express = require('express') /* This is how we import the express module */
 
-const app = express()
+const app = express() /* This is how we create an express application */
 
-app.use(express.static('public')) /* This is how we serve static files */
+const userRouters = require('./routes/userRoutes')
+
+
+
+app.use(express.static('public').json()) /* This is how we serve static files */
+
+app.use('/api/v1/users',userRouters) /* This is how we use the userRouters */
 
 app.use((req,res,next) =>{
     console.log("This is the first middleware")
